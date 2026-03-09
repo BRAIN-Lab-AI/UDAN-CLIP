@@ -4,7 +4,7 @@
 <br>
 <div align="center">
 <a href="https://arxiv.org/abs/2505.19895"><img src="https://img.shields.io/badge/arXiv-2505.19895-b31b1b.svg" alt="arXiv"></a>
-<a href="https://github.com/AfrahMS/udan-clip.github.io"><img src="https://img.shields.io/github/stars/AfrahMS/udan-clip.github.io?style=social" alt="GitHub stars"></a>
+<a href="https://github.com/BRAIN-Lab-AI/UDAN-CLIP"><img src="https://img.shields.io/github/stars/BRAIN-Lab-AI/UDAN-CLIP.io?style=social" alt="GitHub stars"></a>
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
 </div>
 
@@ -250,7 +250,7 @@ We thank the King Fahd University of Petroleum and Minerals and SDAIA-KFUPM JRC 
 
 ## Contact
 For questions or collaborations, please contact:
-- Afrah Shaahid: [email]
+- Afrah Shaahid: afrahshaahid@outlook.com
 - Muzammil Behzad: muzammil.behzad@kfupm.edu.sa
 
 ## Project Page
