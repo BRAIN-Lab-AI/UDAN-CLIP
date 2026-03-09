@@ -1,4 +1,3 @@
-```markdown
 # <div align="center">UDAN-CLIP 🌊</div>
 <div align="center">Afrah Shaahid, Muzammil Behzad</div>
 <div align="center"><sup>King Fahd University of Petroleum and Minerals</sup></div>
@@ -15,7 +14,7 @@ Underwater images suffer from complex degradations including light absorption, s
 
 **UDAN-CLIP** addresses these challenges through an image-to-image diffusion framework pre-trained on synthetic underwater datasets and enhanced with a customized CLIP-based classifier, a spatial attention module, and a novel CLIP-Diffusion loss. The classifier preserves natural in-air priors and semantically guides the diffusion process, while the spatial attention module focuses on correcting localized degradations such as haze and low contrast.
 
-Here are some example enhancement results produced by UDAN-CLIP:
+Here is a pipeline diagram of UDAN-CLIP:
 ![Teaser](static/images/intro_fig.png)
 
 ## Overview of UDAN-CLIP
@@ -36,7 +35,7 @@ UDAN-CLIP achieves high-quality underwater image enhancement through four key co
 
 ### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/AfrahMS/udan-clip.github.io.git
+git clone https://github.com/BRAIN-Lab-AI/UDAN-CLIP.git
 cd udan-clip.github.io
 ```
 
@@ -217,16 +216,6 @@ UDAN-CLIP consistently outperforms baseline methods across all evaluation metric
 ![Heatmap Analysis](static/images/heatmap.png)
 *Performance heatmap showing enhancement quality across different degradation levels*
 
-## TODO List
-- [ ] Release complete training code and pre-trained models
-- [ ] Add Colab notebook for interactive demonstration
-- [ ] Provide Gradio web interface for easy testing
-- [ ] Expand support for video enhancement
-- [ ] Add real-time inference capability
-- [ ] Include more diverse underwater scenes (deep sea, murky water, etc.)
-- [ ] Release dataset preparation scripts
-- [ ] Add support for custom fine-tuning on new underwater domains
-
 ## Community Contributions
 We welcome contributions from the community! Here are some ways you can help:
 
@@ -257,7 +246,7 @@ If you find UDAN-CLIP helpful for your research, please cite our paper:
 ```
 
 ## Acknowledgements
-We thank the King Fahd University of Petroleum and Minerals for supporting this research. We also acknowledge the developers of CLIP and the diffusion models that inspired this work.
+We thank the King Fahd University of Petroleum and Minerals and SDAIA-KFUPM JRC for Artificial Intelligence for supporting this research. We also acknowledge the developers of CLIP and the diffusion models that inspired this work.
 
 ## Contact
 For questions or collaborations, please contact:
@@ -272,4 +261,4 @@ Visit our [project website](https) for more details, visual results, and updates
 <div align="center">
 ⭐ If you find UDAN-CLIP useful, please consider starring the repository! ⭐
 </div>
-```
+
