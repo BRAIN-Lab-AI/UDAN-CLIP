@@ -139,7 +139,7 @@ python train.py --config config.yaml --gpu 0
 ## Key Features
 
 ### Advanced Diffusion Architecture
-- **Domain-Adaptive Pretraining**: Leverages synthetic underwater datasets while preserving natural image priors
+- **Domain-Adaptive Pretraining**: Leverages underwater datasets while preserving natural image priors
 - **Progressive Restoration**: Multi-step denoising for high-quality output
 - **Semantic Guidance**: CLIP-based conditioning ensures visually coherent results
 
