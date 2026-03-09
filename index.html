@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="UDAN-CLIP: A diffusion-based underwater image enhancement framework with CLIP-guided contrastive learning and spatial attention.">
+  <meta name="keywords"
+    content="Underwater Image Enhancement, Diffusion Model, CLIP, Vision-Language Learning, Domain Adaptation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UDAN-CLIP: Underwater Diffusion Attention Network</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  
+  <style>
+    /* PaperBanana-inspired styling */
+    :root {
+      --primary-color: #2c3e50;
+      --accent-color: #3498db;
+      --light-bg: #f8f9fa;
+      --border-radius: 12px;
+      --box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    body {
+      font-family: 'Google Sans', 'Noto Sans', sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+      color: white;
+      padding: 4rem 1.5rem;
+    }
+
+    .hero .title {
+      color: white !important;
+      font-size: 2.8rem !important;
+      font-weight: 400 !important;
+      margin-bottom: 1.5rem !important;
+    }
+
+    .hero .subtitle {
+      color: rgba(255,255,255,0.9) !important;
+      font-size: 1.2rem !important;
+    }
+
+    .section {
+      padding: 4rem 1.5rem;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .content-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: var(--box-shadow);
+      margin-bottom: 2rem;
+    }
+
+    .publication-authors {
+      font-size: 1.2rem;
+      margin: 1.5rem 0;
+    }
+
+    .author-block {
+      margin: 0 0.5rem;
+    }
+
+    .publication-links {
+      margin: 2rem 0;
+    }
+
+    .button.is-rounded {
+      border-radius: 30px;
+      padding: 0.5rem 1.8rem;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .button.is-rounded:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .teaser-image {
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      max-width: 100%;
+      height: auto;
+      margin: 1rem 0;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .results-item {
+      text-align: center;
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      box-shadow: var(--box-shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .results-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .results-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .caption {
+      font-size: 0.95rem;
+      color: #666;
+      margin-top: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .comparison-row {
+      display: flex;
+      gap: 2rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .comparison-col {
+      flex: 1;
+      min-width: 300px;
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      box-shadow: var(--box-shadow);
+    }
+
+    .comparison-col img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .feature-list li {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .feature-list li:before {
+      content: "▹";
+      color: var(--accent-color);
+      position: absolute;
+      left: 0;
+    }
+
+    .abstract-text {
+      font-size: 1.1rem;
+      text-align: justify;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .bibtex-code {
+      background: var(--light-bg);
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      font-family: monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+    }
+
+    .footer {
+      background: var(--light-bg);
+      padding: 3rem 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .footer a {
+      color: var(--primary-color);
+      margin: 0 0.5rem;
+    }
+
+    .footer a:hover {
+      color: var(--accent-color);
+    }
+
+    .institution {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.8);
+      margin-top: 1rem;
+    }
+
+    .full-width-image {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .table-container {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: var(--box-shadow);
+      margin: 2rem 0;
+      overflow-x: auto;
+    }
+
+    .table-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .hero .title {
+        font-size: 2rem !important;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-10 has-text-centered">
+          <h1 class="title is-1">
+            <b>UDAN-CLIP</b>
+          </h1>
+          <h2 class="subtitle is-3">
+            Underwater Diffusion Attention Network with Contrastive Language-Image Joint Learning
+          </h2>
+          
+          <div class="publication-authors">
+            <span class="author-block">Afrah Shaahid<sup>1</sup>,</span>
+            <span class="author-block">Muzammil Behzad<sup>1</sup></span>
+          </div>
+
+          <div class="institution">
+            <sup>1</sup>King Fahd University of Petroleum and Minerals
+          </div>
+
+          <div class="publication-links">
+            <span class="link-block">
+              <a href="UDANCLIP.pdf" target="_blank" class="button is-rounded is-light">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                <span>Paper</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://arxiv.org/abs/2505.19895" target="_blank" class="button is-rounded is-light">
+                <span class="icon"><i class="ai ai-arxiv"></i></span>
+                <span>arXiv</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="#" target="_blank" class="button is-rounded is-light">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>Code</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEASER -->
+  <section class="section">
+    <div class="container">
+      <div class="content has-text-centered">
+        <img src="static/images/intro_fig.png" alt="Introduction figure" class="teaser-image" style="max-width: 90%;">
+        <p class="caption">
+          An overview of UDAN-CLIP addressing underwater image degradation and enhancement challenges.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABSTRACT -->
+  <section class="section" style="background: var(--light-bg);">
+    <div class="container">
+      <h2 class="section-title">Abstract</h2>
+      <div class="content-card">
+        <div class="abstract-text">
+          <p>
+            Underwater images suffer from color distortion, light absorption,
+            and scattering effects that significantly degrade visual quality.
+            We propose <strong>UDAN-CLIP</strong>, a diffusion-based underwater image
+            enhancement framework augmented with contrastive vision-language
+            guidance. Our model integrates domain-adaptive diffusion modeling,
+            CLIP-guided semantic alignment, and spatial attention to focus on
+            severely degraded regions. Extensive experiments demonstrate
+            superior performance over state-of-the-art underwater enhancement
+            methods in both quantitative metrics and perceptual quality.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHOD OVERVIEW -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Method Overview</h2>
+      <div class="content-card">
+        <p class="has-text-centered" style="margin-bottom: 2rem;">
+          UDAN-CLIP combines diffusion modeling with contrastive language-image supervision to improve semantic consistency during underwater image enhancement.
+        </p>
+
+        <div class="comparison-row">
+          <div class="comparison-col">
+            <img src="static/images/architecture_fig1.png" alt="Architecture overview 1">
+            <p class="caption">Overall architecture of UDAN-CLIP</p>
+          </div>
+          <div class="comparison-col">
+            <img src="static/images/architecture_fig2.png" alt="Architecture overview 2">
+            <p class="caption">Detailed diffusion module structure</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem;">
+          <ul class="feature-list">
+            <li><strong>Domain-Adaptive Diffusion Module:</strong> Learns underwater degradation distributions and progressively restores clean images.</li>
+            <li><strong>CLIP-Guided Classifier:</strong> Aligns enhanced images with semantic textual descriptions.</li>
+            <li><strong>Spatial Attention Mechanism:</strong> Focuses restoration on heavily degraded regions.</li>
+            <li><strong>CLIP-Diffusion Loss:</strong> Encourages semantic consistency during reverse diffusion.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON RESULTS -->
+  <section class="section" style="background: var(--light-bg);">
+    <div class="container">
+      <h2 class="section-title">Comparison with State-of-the-Art</h2>
+      
+      <div class="comparison-row">
+        <div class="comparison-col">
+          <img src="static/images/C60_comparison.png" alt="C60 dataset comparison">
+          <p class="caption">Results on C60 dataset</p>
+        </div>
+        <div class="comparison-col">
+          <img src="static/images/T200_comparison.png" alt="T200 dataset comparison">
+          <p class="caption">Results on T200 dataset</p>
+        </div>
+      </div>
+
+      <div class="comparison-row">
+        <div class="comparison-col">
+          <img src="static/images/Color-Checker_comparison.png" alt="Color-Checker7 dataset comparison">
+          <p class="caption">Results on Color-Checker7 dataset</p>
+        </div>
+        <div class="comparison-col">
+          <img src="static/images/heatmap.png" alt="Performance heatmap">
+          <p class="caption">Performance heatmap analysis</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUANTITATIVE RESULTS -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Quantitative Results</h2>
+      
+      <!-- New Quantitative Results Table -->
+      <div class="table-container">
+        <img src="static/images/results_table.png" alt="Quantitative results table" class="full-width-image">
+        <p class="caption has-text-centered">
+          Quantitative comparison on T200, Color-Checker7, and C60 datasets. Values show improvement over baseline methods.
+        </p>
+      </div>
+
+      <div class="results-grid">
+        <div class="results-item">
+          <img src="static/images/plot1_T200.png" alt="T200 quantitative results">
+          <p class="caption">Quantitative comparison on T200 dataset</p>
+        </div>
+        <div class="results-item">
+          <img src="static/images/plot2_Color-Checker7.png" alt="Color-Checker7 quantitative results">
+          <p class="caption">Quantitative comparison on Color-Checker7 dataset</p>
+        </div>
+        <div class="results-item">
+          <img src="static/images/plot3_C60.png" alt="C60 quantitative results">
+          <p class="caption">Quantitative results on C60 dataset</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILED ANALYSIS -->
+  <section class="section" style="background: var(--light-bg);">
+    <div class="container">
+      <h2 class="section-title">Detailed Analysis</h2>
+      
+      <div class="comparison-row">
+        <div class="comparison-col">
+          <img src="static/images/updated_zoomedin1.png" alt="Zoomed analysis 1">
+          <p class="caption">Preservation of fine textures and structural details. Our UDAN-CLIP recovers intricate patterns (e.g., coral textures, fish scales) that are lost or blurred in competing approaches.</p>
+        </div>
+        <div class="comparison-col">
+          <img src="static/images/updated_zoomedin2.png" alt="Zoomed analysis 2">
+          <p class="caption">Recovery of fine details in challenging low-light underwater conditions. Our UDAN-CLIP reveals hidden structural elements (e.g., facial features, coin engravings, fish scales, and pool textures) that remain completely obscured in the CLIP-UIE baseline due to severe light absorption and scattering.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIBTEX -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">BibTeX</h2>
+      <div class="content-card">
+        <pre class="bibtex-code"><code>
+@article{shaahid2026udanclip,
+  title={UDAN-CLIP: Underwater Diffusion Attention Network with Contrastive Language-Image Joint Learning},
+  author={Shaahid, Afrah and Behzad, Muzammil},
+  journal={arXiv preprint arXiv:2601.xxxxx},
+  year={2026}
+}
+        </code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          <a href="UDANCLIP.pdf" target="_blank"><i class="fas fa-file-pdf fa-2x"></i></a>
+          <a href="#" target="_blank" style="margin-left: 20px;"><i class="fab fa-github fa-2x"></i></a>
+          <a href="cas-refs.bib" target="_blank" style="margin-left: 20px;"><i class="fas fa-book fa-2x"></i></a>
+        </p>
+        <p style="margin-top: 2rem; font-size: 0.9rem; color: #666;">
+          UDAN-CLIP
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
