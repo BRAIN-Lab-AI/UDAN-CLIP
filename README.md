@@ -1,4 +1,9 @@
-# <div align="center">
+# <div align="center">UDAN-CLIP 🌊</div>
+<div align="center">Afrah Shaahid, Muzammil Behzad</div>
+<div align="center"><sup>King Fahd University of Petroleum and Minerals</sup> · <sup>SDAIA-KFUPM Joint Research Center for Artificial Intelligence</sup></div>
+<br>
+
+<div align="center">
   <a href="https://brain-lab-ai.github.io/UDAN-CLIP/"><img src="https://img.shields.io/badge/🌊-Project_Page-1f425f.svg" alt="Project Page"></a>
   <a href="https://github.com/BRAIN-Lab-AI/UDAN-CLIP"><img src="https://img.shields.io/badge/📁-GitHub-181717.svg?logo=github" alt="GitHub"></a>
   <a href="https://arxiv.org/abs/2505.19895"><img src="https://img.shields.io/badge/📄-arXiv-b31b1b.svg?logo=arxiv" alt="arXiv"></a>
