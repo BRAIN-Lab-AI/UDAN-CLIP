@@ -36,7 +36,7 @@ UDAN-CLIP achieves high-quality underwater image enhancement through four key co
 ### Step 1: Clone the Repository
 ```bash
 git clone https://github.com/BRAIN-Lab-AI/UDAN-CLIP.git
-cd udan-clip.github.io
+cd UDAN-CLIP
 ```
 
 ### Step 2: Set Up Environment
@@ -58,7 +58,7 @@ Download the following datasets and place them in the `data/` directory:
 Dataset links and preparation scripts will be provided soon.
 
 ### Step 4: Configuration
-Create a `config.yaml` file with your model settings:
+Edit the `config/config.yaml` file with your model settings:
 ```yaml
 model:
   diffusion_steps: 1000
@@ -79,41 +79,51 @@ data:
 
 #### Inference on Single Image
 ```bash
-python inference.py --input path/to/image.jpg --output results/
+python infer.py --input path/to/image.jpg --output results/
+```
+
+#### Inference Demo
+```bash
+python infer_demo.py
 ```
 
 #### Batch Processing
 ```bash
-python batch_process.py --input_dir data/test_images/ --output_dir results/
+python sample.py --input_dir data/test_images/ --output_dir results/
 ```
 
 #### Training from Scratch
 ```bash
-python train.py --config config.yaml --gpu 0
+python train.py --config config/config.yaml --gpu 0
+```
+
+#### Evaluation
+```bash
+python eval.py
+python final_calculate_metrics.py
 ```
 
 ## Project Structure
 ```
+├── _pycache_/
+├── clip_model/
+│   └── ViT-B-32.pt
+├── config/
+│   └── config.yaml
+├── core/
 ├── data/
 │   ├── T200/
 │   ├── Color-Checker7/
 │   └── C60/
-├── models/
-│   ├── diffusion.py
-│   ├── clip_guidance.py
-│   ├── spatial_attention.py
-│   └── udan_clip.py
-├── utils/
-│   ├── data_loader.py
-│   ├── metrics.py
-│   ├── losses.py
-│   └── visualization.py
-├── configs/
-│   └── default_config.yaml
-├── scripts/
-│   ├── train.sh
-│   ├── evaluate.sh
-│   └── inference.sh
+├── misc/
+├── model/
+│   ├── _pycache_/
+│   ├── ddpm_modules/
+│   ├── sr3_modules/
+│   ├── __init__.py
+│   ├── base_model.py
+│   ├── model.py
+│   └── networks.py
 ├── static/
 │   └── images/
 │       ├── architecture_fig1.png
@@ -129,11 +139,17 @@ python train.py --config config.yaml --gpu 0
 │       ├── updated_zoomedin1.png
 │       ├── updated_zoomedin2.png
 │       └── results_table.png
-├── inference.py
-├── train.py
-├── batch_process.py
-├── requirements.txt
-└── README.md
+├── LICENSE
+├── README.md
+├── eval.py
+├── final_calculate_metrics.py
+├── index.html
+├── infer.py
+├── infer_demo.py
+├── metrics_util.py
+├── requirement.txt
+├── sample.py
+└── train.py
 ```
 
 ## Key Features
@@ -261,4 +277,3 @@ Visit our [project website](https) for more details, visual results, and updates
 <div align="center">
 ⭐ If you find UDAN-CLIP useful, please consider starring the repository! ⭐
 </div>
-
