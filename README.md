@@ -1,6 +1,6 @@
 # <div align="center">UDAN-CLIP 🌊</div>
 <div align="center">Afrah Shaahid, Muzammil Behzad</div>
-<div align="center"><sup>King Fahd University of Petroleum and Minerals</sup></div>
+<div align="center"><sup>King Fahd University of Petroleum and Minerals</sup> · <sup>SDAIA-KFUPM Joint Research Center for Artificial Intelligence</sup></div>
 <br>
 <div align="center">
 <a href="https://arxiv.org/abs/2505.19895"><img src="https://img.shields.io/badge/arXiv-2505.19895-b31b1b.svg" alt="arXiv"></a>
