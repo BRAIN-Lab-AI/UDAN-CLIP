@@ -264,14 +264,13 @@ If you find UDAN-CLIP helpful for your research, please cite our paper:
 ## Acknowledgements
 We thank the King Fahd University of Petroleum and Minerals and SDAIA-KFUPM JRC for Artificial Intelligence for supporting this research. We also acknowledge the developers of CLIP and the diffusion models that inspired this work.
 
+## Project Page
+Visit our [project website](https://brain-lab-ai.github.io/UDAN-CLIP/) for more details, visual results, and updates.
+
 ## Contact
 For questions or collaborations, please contact:
 - Afrah Shaahid: afrahshaahid@outlook.com
 - Muzammil Behzad: muzammil.behzad@kfupm.edu.sa
-
-## Project Page
-Visit our [project website](https://brain-lab-ai.github.io/UDAN-CLIP/) for more details, visual results, and updates.
-
 ---
 
 <div align="center">
