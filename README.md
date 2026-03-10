@@ -270,7 +270,7 @@ For questions or collaborations, please contact:
 - Muzammil Behzad: muzammil.behzad@kfupm.edu.sa
 
 ## Project Page
-Visit our [project website](https) for more details, visual results, and updates.
+Visit our [project website](https://brain-lab-ai.github.io/UDAN-CLIP/) for more details, visual results, and updates.
 
 ---
 
